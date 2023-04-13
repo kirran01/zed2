@@ -16,15 +16,27 @@ function TransactionPage({ data }) {
   let incomingTransactions = transactions.filter(
     (t) => t.recievedBy.app_user.username == "@kirran"
   );
-  console.log(transactions, "transactions");
-  console.log(outGoingTransactions, "ot");
-  console.log(incomingTransactions, "it");
+  let outGoingTotal = outGoingTransactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
+    0
+  );
+  let incomingTotal = incomingTransactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
+    0
+  );
+  let balance = incomingTotal - outGoingTotal;
+  const combinedTransactions = [
+    ...outGoingTransactions,
+    ...incomingTransactions,
+  ];
+
   return (
     <div>
       <h1 className="text-3xl text-center">Transactions</h1>
-      {transactions.map((transaction) => (
-        <div key={transaction.id} className="border-2 border-black m-5">
-          <p>Amount: {transaction.amount}</p>
+      <p>{balance.toLocaleString()}</p>
+      {combinedTransactions.map((transaction) => (
+        <div key={transaction.id} className={`border-2 ${transaction.sentBy.app_user.username === "@kirran" ? 'border-red-400' : 'border-green-400'}`}>
+          <p>Amount: {transaction.recievedBy.app_user.username==='@kirran'?'':'-'}{transaction.amount}</p>
           <p>Received By: {transaction.recievedBy.app_user.username}</p>
           <p>Sent By:{transaction.sentBy.app_user.username}</p>
         </div>
