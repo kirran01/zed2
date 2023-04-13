@@ -1,10 +1,30 @@
-import fetchData from "../../components/transactions.jsx";
+import client from "../../apollo-client";
+import { gql } from "@apollo/client";
 
-export async function getServerSideProps() {
-  const data = await fetchData();
+export async function getServerSideProps({}) {
+  const { data } = await client.query({
+    query: gql`
+      query {
+        transaction {
+          amount
+          sentBy {
+            app_user {
+              username
+            }
+          }
+          recievedBy {
+            app_user {
+              username
+            }
+          }
+        }
+      }
+    `,
+  });
+
   return {
     props: {
-      data,
+      data:data,
     },
   };
 }
@@ -35,8 +55,19 @@ function TransactionPage({ data }) {
       <h1 className="text-3xl text-center">Transactions</h1>
       <p>{balance.toLocaleString()}</p>
       {combinedTransactions.map((transaction) => (
-        <div key={transaction.id} className={`border-2 ${transaction.sentBy.app_user.username === "@kirran" ? 'border-red-400' : 'border-green-400'}`}>
-          <p>Amount: {transaction.recievedBy.app_user.username==='@kirran'?'':'-'}{transaction.amount}</p>
+        <div
+          key={transaction.id}
+          className={`border-2 ${
+            transaction.sentBy.app_user.username === "@kirran"
+              ? "border-red-400"
+              : "border-green-400"
+          }`}
+        >
+          <p>
+            Amount:{" "}
+            {transaction.recievedBy.app_user.username === "@kirran" ? "" : "-"}
+            {transaction.amount}
+          </p>
           <p>Received By: {transaction.recievedBy.app_user.username}</p>
           <p>Sent By:{transaction.sentBy.app_user.username}</p>
         </div>
