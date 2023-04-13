@@ -10,10 +10,20 @@ export async function getServerSideProps() {
 }
 
 function userPage({ data }) {
-  console.log(data, "userdata");
+  let users = data.app_user;
+  console.log(users, "userdata");
   return (
     <div>
       <h1>UserPage</h1>
+      {users.map((user) => {
+        return (
+          <div className="border-2 border-black m-5 p-5">
+            <p>Email:{user.email}</p>
+            <p>Phone Number:{user.phone_number}</p>
+            <p>Username:{user.username}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }

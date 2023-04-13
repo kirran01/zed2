@@ -14,11 +14,8 @@ function TransactionPage({ data }) {
   return (
     <div>
       <h1>Transactions</h1>
-      <div>
-        
-      </div>
       {transactions.map((transaction) => (
-        <div key={transaction.id}>
+        <div key={transaction.id} className="border-2 border-black m-5">
           <p>Amount: {transaction.amount}</p>
           <p>Received By: {transaction.recievedBy.app_user.username}</p>
           <p>Sent By:{transaction.sentBy.app_user.username}</p>
