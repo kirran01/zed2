@@ -13,9 +13,8 @@ export async function getServerSideProps() {
 function userPage({ data }) {
   let users = data.app_user;
   const filteredUsers = users.filter((user) => user.username === "@kirran");
-  console.log(users, "userdata");
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <h1 className="text-3xl text-center">User Profile</h1>
       <table className="border-collapse border-2 border-black m-5 p-5 rounded-lg">
         <tbody>
