@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <p className="text-3xl">Zed Labs Demo</p>
-      <p>A digital wallet functionalty implementation by Kirran Kirpalani</p>
+      <p className="m-3">An E-money digital payment service functionalty implementation by Kirran Kirpalani</p>
     </div>
   );
 }

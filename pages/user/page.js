@@ -1,5 +1,6 @@
 import fetchData from "../../components/userinfo";
 import React from "react";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export async function getServerSideProps() {
   const data = await fetchData();
@@ -16,6 +17,7 @@ function userPage({ data }) {
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-3xl text-center">User Profile</h1>
+      <AccountCircleIcon sx={{ fontSize: 80, margin:3 }}/>
       <table className="border-collapse border-2 border-black m-5 p-5 rounded-lg">
         <tbody>
           {filteredUsers.map((user) => (

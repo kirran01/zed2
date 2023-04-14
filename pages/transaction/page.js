@@ -33,7 +33,7 @@ function TransactionPage({ data }) {
   return (
     <div className="p-3 flex flex-col items-center justify-center">
       <p className="text-3xl text-center my-2">Transactions</p>
-      <p className="text-xl my-2">Balance: {balance.toLocaleString()}</p>
+      <p className="text-xl m-3">Balance: {balance.toLocaleString()}</p>
       <div className="bg-slate-50">
         {combinedTransactions.map((transaction) => (
           <div
