@@ -10,7 +10,6 @@ export async function getServerSideProps() {
     },
   };
 }
-
 function userPage({ data }) {
   let users = data.app_user;
   const filteredUsers = users.filter((user) => user.username === "@kirran");
