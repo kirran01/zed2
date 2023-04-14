@@ -6,4 +6,8 @@ The purpose of this assignment was to simulate some functionality of a e-money p
 
 I'm brand new to NextJS but seeing the power and potential of server side rendering on react components (and the option to NOT utilize them) is eye opening!
 
+If you would like to see the demo, i've deployed it on Vercel. Have a look!
+
+https://zedlabs-demo.vercel.app/
+
 Cheers ✌🏽
